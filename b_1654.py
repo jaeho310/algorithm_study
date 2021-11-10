@@ -1,14 +1,14 @@
 import sys
 K, N = map(int, input().split())
 lan = [int(sys.stdin.readline()) for _ in range(K)]
-start, end = 1, max(lan) #이분탐색 처음과 끝위치
+start, end = 1, max(lan)
 
-while start <= end: #적절한 랜선의 길이를 찾는 알고리즘
-    mid = (start + end) // 2 #중간 위치
+while start <= end:
+    mid = (start + end) // 2
     lines = 0 #랜선 수
     for i in lan:
         lines += i // mid #분할 된 랜선 수
-    if lines >= N: #랜선의 개수가 분기점
+    if lines >= N: # 원하는 랜선보다 많이짤린경우 랜선수를 줄이면서 간다.
         start = mid + 1
     else:
         end = mid - 1
