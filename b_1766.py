@@ -16,9 +16,9 @@ for _ in range(m):
     indegree[y] += 1 
 
 for i in range(1, n+1):
-    # 차수가 0이라는건 뽑을 차례이다.
+    # 차수가 0이라는건 뽑아도 된다는 뜻이므로 
     if indegree[i] == 0:
-        # 정점의 index를 heap에 넣어주고
+        # 정점의 index를 heap queue에 넣어준다.
         heapq.heappush(heap,i)
 while heap:
     data = heapq.heappop(heap)
