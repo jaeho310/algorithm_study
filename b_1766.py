@@ -13,10 +13,10 @@ for _ in range(m):
     x, y = map(int, stdin.readline().split())
     problem_list[x].append(y)
     # 위상정렬을 위해 자기한테 들어오는 차수를 하나씩 올린다.
-    indegree[y] += 1 
+    indegree[y] += 1
 
 for i in range(1, n+1):
-    # 차수가 0이라는건 뽑아도 된다는 뜻이므로 
+    # 차수가 0이라는건 뽑아도 된다는 뜻이므로
     if indegree[i] == 0:
         # 정점의 index를 heap queue에 넣어준다.
         heapq.heappush(heap,i)
