@@ -23,7 +23,6 @@ if __name__ == '__main__':
     for _ in range(t):
         n, m = map(int, stdin.readline().split(' '))
         graph = defaultdict(list)
-        # visit_check = [0] * n
         for _ in range(m):
             a, b = map(int, stdin.readline().strip().split())
             graph[a].append(b)

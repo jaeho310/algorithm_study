@@ -1,34 +1,27 @@
-from sys import stdin
-def solution(metrix, start, end, white, blue):
-    color = metrix[start][start]
-    is_same = True
-    for i in range(start, end):
-        for j in range(i, end):
-            if metrix[i][j] != color:
-                is_same = False
-                break
-    if not is_same:
-        w_cnt, b_cnt = solution(metrix, start, end//2, white, blue)
-        white += w_cnt
-        blue += b_cnt
-        w_cnt, b_cnt = solution(metrix, end//2, end, white, blue)
-        white += w_cnt
-        blue += b_cnt
+import sys
 
+N = int(sys.stdin.readline())
+paper = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+
+result = []
+
+
+def solution(x, y, N):
+    color = paper[x][y]
+    for i in range(x, x + N):
+        for j in range(y, y + N):
+            if color != paper[i][j]:
+                solution(x, y, N // 2)
+                solution(x, y + N // 2, N // 2)
+                solution(x + N // 2, y, N // 2)
+                solution(x + N // 2, y + N // 2, N // 2)
+        return
     if color == 0:
-        white += 1
-    elif color == 1:
-        blue += 1
-    return white, blue
+        result.append(0)
+    else:
+        result.append(1)
 
 
-            
-            
-
-
-n = int(stdin.readline())
-metrix = []
-for i in range(n):
-    metrix.append(list(map(int,stdin.readline().split())))
-print(solution(metrix, 0, n,  0, 0))
-
+solution(0, 0, N)
+print(result.count(0))
+print(result.count(1))
