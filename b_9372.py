@@ -29,6 +29,3 @@ if __name__ == '__main__':
             graph[a].append(b)
             graph[b].append(a)
         print(solution(graph, 1))
-
-
->>>>>>> 670f71685b02a40cf40526a80898e17f6037a85a
