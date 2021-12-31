@@ -1,20 +1,15 @@
-from collections import defaultdict
+if __name__ == '__main__':
+    dp = [float('inf')] * 5000
+    dp[0] = 0
+    c, n = map(int,input().split())
+    for _ in range(n):
+        cost, customer_cnt = map(int, input().split())
+        for i in range(0, 5000):
+            if dp[i] == float('inf'):
+                continue
+            for j in range(1, 5000):
+                if j*customer_cnt + i >= 5000:
+                    break
+                dp[i+customer_cnt*j] = min(dp[i+customer_cnt*j], dp[i]+cost*j)
+    print(dp[c])
 
-c, n = map(int,input().split())
-arr = []
-
-for _ in range(n):
-    cost, value = map(int,input().split())
-    arr.append([cost, value, value / cost])
-
-arr = sorted(arr, key= lambda x: x[2], reverse=True)
-idx = 0
-answer = 0
-cnt = 0
-while cnt < c:
-    if arr[idx][1] > c:
-        idx += 1
-        continue
-    answer += arr[idx][0]
-    cnt += arr[idx][1]
-print(answer)
