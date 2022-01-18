@@ -8,7 +8,6 @@ def solution(s):
     dict = sorted(dict)
     for i in range(len(s)//2):
         ans[i] = dict
-    for k, v
     print(dict)
 
 
