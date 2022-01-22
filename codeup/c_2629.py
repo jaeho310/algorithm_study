@@ -1,6 +1,6 @@
 import math
 
-def get_value(mid, arr):
+def get_people(mid, arr):
     temp = 0
     distance = arr[mid][0]
     for el in arr:
@@ -15,7 +15,7 @@ def binary_search(arr):
     end = length-1
     while start <= end:
         mid = start + end // 2
-        value = get_value(mid, arr)
+        value = get_people(mid, arr)
         if value > 1000000:
             end = mid - 1
         else:
