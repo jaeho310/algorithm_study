@@ -1,14 +1,16 @@
 from collections import defaultdict
 
 def solution(s):
-    dict = defaultdict(int)
+    alpha_dict = dict()
     ans = [0] * len(s)
     for i in s:
-        dict[i] += 1
-    dict = sorted(dict)
-    for i in range(len(s)//2):
-        ans[i] = dict
-    print(dict)
+        if i in alpha_dict:
+            alpha_dict[i] += 1
+        else:
+            alpha_dict[i] = 1
+    alpha_dict = dict(sorted(alpha_dict))
+    print(alpha_dict.keys())
+
 
 
 if __name__ == '__main__':
