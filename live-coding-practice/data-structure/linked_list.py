@@ -23,18 +23,25 @@ class LinkedList:
 
     def print(self):
         current = self.head
-        res = []
         while current:
-            res.append(current.data)
+            print(current.data)
             current = current.next
-        print(res)
 
     def clear(self):
         self.head = None
 
-
+    def get_index(self, data):
+        current = self.head
+        cnt = 0
+        while current:
+            if current.data == data:
+                return cnt
+            current = current.next
+            cnt += 1
+        return -1
 if __name__ == '__main__':
     linked_list = LinkedList()
     linked_list.append(Node(1))
     linked_list.append(Node(2))
     linked_list.print()
+    print(linked_list.get_index(2))
