@@ -1,51 +1,47 @@
 from collections import deque
 
-def bfs(place, visited, start):
-    queue = deque()
-    queue.append(start)
-    location = 1
-    while queue:
-        dx = [0,0,1,-1]
-        dy = [1,-1,0,0]
-        x, y = queue.popleft()
+
+def bfs(p, idx):
+    q = deque([idx])
+    visited = [[False] * 5 for _ in range(5)]
+    dic = {0: [0, -1], 1: [-1, 0], 2: [0, 1], 3: [1, 0]}
+
+    while q:
+        x, y, d = q.popleft()
+        visited[x][y] = True
+
         for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if 0 <= nx < 4 and 0 <= ny < 4:
-                if place[nx][ny] != 'X':
-                    location += 1
-                    visited[nx][ny] = location
+            nx = x + dic[i][0]
+            ny = y + dic[i][1]
+            nd = d + 1
 
+            if 0 <= nx < 5 and 0 <= ny < 5 and not visited[nx][ny]:
+                visited[nx][ny] = True
 
-def check(place):
-    visited = [[0 for _ in range(5)] for _ in range(5)]
-    for i in range(5):
-        for j in range(5):
-            if place[i][j] == 'P':
-                visited[i][j] = 1
-                bfs(place, visited, (i, j))
-    for el in visited:
-        print(el)
+                if p[nx][ny] == 'P':
+                    if nd <= 2:
+                        return False
+
+                elif p[nx][ny] == 'O':
+                    if nd == 1:
+                        q.append([nx, ny, nd])
+
+    return True
 
 
 def solution(places):
-    ans = []
-    check(places[0])
-    # for place in places:
-    #     if check(place):
-    #         ans.append(1)
-    #     else:
-    #         ans.append(0)
-    # return True
-if __name__ == '__main__':
-    # P는 사람
-    # O는 빈자리
-    # X는 파티션
-    places = [
-        ["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"],
-        ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"],
-        ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"],
-        ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"],
-        ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]
-    ]
-    print(solution(places))
+    answer = []
+
+    for p in places:
+        flag = 1
+
+        for i in range(5):
+            for j in range(5):
+                if p[i][j] == 'P':
+                    result = bfs(p, [i, j, 0])
+                    if not result:
+                        flag = 0
+
+        answer.append(flag)
+
+    return answer
