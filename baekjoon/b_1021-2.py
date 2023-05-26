@@ -1,0 +1,4 @@
+if __name__ == '__main__':
+    n, m = map(int, input().split())
+    target = list(map(int, input().split()))
+    q = [i for i in range(n)]

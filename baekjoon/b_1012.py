@@ -10,9 +10,6 @@ def dfs(x, y):
     dx = [1,-1,0,0]
     dy = [0,0,1,-1]
 
-    visited = []
-    need_visited = []
-
     for i in range(4):
         nx = x + dx[i]
         ny = y + dy[i]

@@ -1,4 +1,4 @@
-def selection_sort(arr):
+def solution(arr):
     for i in range(len(arr)):
         for j in range(i, 0, -1):
             if arr[j - 1] > arr[j]:
@@ -9,4 +9,4 @@ def selection_sort(arr):
 
 if __name__ == '__main__':
     arr = [5, 2, 3, 1, 7]
-    print(selection_sort(arr))
+    print(solution(arr))
