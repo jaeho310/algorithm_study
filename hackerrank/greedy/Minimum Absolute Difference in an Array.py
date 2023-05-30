@@ -15,7 +15,7 @@ import sys
 #
 
 def minimumAbsoluteDifference(arr):
-    min_value = 10 ** 5
+    min_value = sys.maxsize
     arr.sort()
     for index in range(0, len(arr) - 1):
         min_value = min(min_value, abs(arr[index] - arr[index + 1]))
