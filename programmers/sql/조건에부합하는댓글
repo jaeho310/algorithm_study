@@ -1,0 +1,14 @@
+SELECT
+    ugb.TITLE, 
+    ugb.BOARD_ID, 
+    ugr.REPLY_ID, 
+    ugr.WRITER_ID, 
+    ugr.CONTENTS, 
+    DATE_FORMAT(ugr.CREATED_DATE, '%Y-%m-%d') AS CREATED_DATE
+FROM USED_GOODS_BOARD as ugb 
+inner join USED_GOODS_REPLY as ugr on ugb.BOARD_ID = ugr.BOARD_ID
+WHERE DATE_FORMAT(ugb.CREATED_DATE, '%Y-%m-%d') = '2022-10'
+and ugb.CREATED_DATE <= '2022-10-31'
+ORDER BY ugr.CREATED_DATE, ugb.TITLE
+
+DATE_FORMAT(date타입의 컬럼, '%Y-%m-%d') 의 결과는 2023-05-30 이다.
