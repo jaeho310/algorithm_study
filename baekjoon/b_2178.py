@@ -3,7 +3,7 @@ def bfs(metrix):
     dy = [1,-1,0,0]
     need_visit = []
     need_visit.append([0,0])
-    visited = []    
+    visited = []
     while need_visit:
         x, y = need_visit.pop(0)
 
@@ -18,14 +18,15 @@ def bfs(metrix):
                     if metrix[nx][ny] == 1:
                         need_visit.append([nx, ny])
                         metrix[nx][ny] = metrix[x][y] + 1
-    
-n, m = map(int, input().split())
-metrix = []
-for i in range(n):
-    val = input()
-    metrix.append([int(val[i]) for i in range(m)])
 
-bfs(metrix)
+if __name__ == '__main__':
+    n, m = map(int, input().split())
+    metrix = []
+    for i in range(n):
+        val = input()
+        metrix.append([int(val[i]) for i in range(m)])
+    print(metrix)
+    # bfs(metrix)
 
     
 
